@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-  let alias = "Movie"; // esto debería estar en singular
+  let alias = "Movie";
   let cols = {
     id: {
       type: dataTypes.BIGINT(10).UNSIGNED,
@@ -7,8 +7,7 @@ module.exports = (sequelize, dataTypes) => {
       allowNull: false,
       autoIncrement: true,
     },
-    // created_at: dataTypes.TIMESTAMP,
-    // updated_at: dataTypes.TIMESTAMP,
+
     title: {
       type: dataTypes.STRING(500),
       allowNull: false,
@@ -25,10 +24,15 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.DATEONLY,
       allowNull: false,
     },
-    length: dataTypes.BIGINT(10),
-    genre_id: dataTypes.BIGINT(10),
+    length: {
+      type: dataTypes.BIGINT(10),
+    },
+    genre_id: {
+      type: dataTypes.BIGINT(10),
+    },
   };
   let config = {
+    tableName: "movies",
     timestamps: true,
     createdAt: "created_at",
     updatedAt: "updated_at",
@@ -38,13 +42,11 @@ module.exports = (sequelize, dataTypes) => {
 
   Movie.associate = function (models) {
     Movie.belongsTo(models.Genre, {
-      // models.Genre -> Genres es el valor de alias en genres.js
       as: "genre",
       foreignKey: "genre_id",
     });
 
     Movie.belongsToMany(models.Actor, {
-      // models.Actor -> Actors es el valor de alias en actor.js
       as: "actors",
       through: "actor_movie",
       foreignKey: "movie_id",

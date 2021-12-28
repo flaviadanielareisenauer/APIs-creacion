@@ -4,7 +4,6 @@ const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 const moment = require("moment");
 
-//Aqui tienen otra forma de llamar a cada uno de los modelos
 const Movies = db.Movie;
 const Genres = db.Genre;
 const Actors = db.Actor;
@@ -43,7 +42,7 @@ const moviesController = {
       res.render("recommendedMovies.ejs", { movies });
     });
   },
-  //Aqui dispongo las rutas para trabajar con el CRUD
+
   add: function (req, res) {
     let promGenres = Genres.findAll();
     let promActors = Actors.findAll();
@@ -119,7 +118,7 @@ const moviesController = {
   },
   destroy: function (req, res) {
     let movieId = req.params.id;
-    Movies.destroy({ where: { id: movieId }, force: true }) // force: true es para asegurar que se ejecute la acción
+    Movies.destroy({ where: { id: movieId }, force: true })
       .then(() => {
         return res.redirect("/movies");
       })
