@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= movie.title %> </title>
     <link rel='stylesheet' href='/css/style.css' />
-</head>
 
+</head>
 <body>
     <figure>
         <img src="/img/logo-DH.png" alt="Logo Digital House">
     </figure>
-
     <h1><%= movie.title %> </h1>    
     <br>
     <p>CALIFICACIÓN: <%= movie.rating %> </p>
@@ -24,5 +23,6 @@
         <a class="botonBorrar" href="/movies/delete/<%= movie.id %>">Borrar</a>
         <a class="botonVolver" href="/movies">Listado de Películas</a>
     </section>
+
 </body>
 </html>

@@ -12,7 +12,6 @@
     <figure>
         <img src="/img/logo-DH.png" alt="Logo Digital House">
     </figure>
-
     <h1>Estas seguro de querer borrar esta película: <%= Movie.title %>???</h1>
     <p>
         <form action="/movies/delete/<%= Movie.id %>?_method=PUT" method="POST">
@@ -21,6 +20,8 @@
             
             <a  class="botonVolver" href="/movies">Listado de Películas</a></p>
         </form>
-    </p>    
+    </p>
+    
 </body>
+
 </html>
